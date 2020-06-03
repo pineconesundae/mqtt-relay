@@ -116,7 +116,8 @@ client.on("connect", (ack) => {
 });
 
 // Event handler when a message is received from one of the subscriptions
-client.on("message", function (topic, message) {
+client.on("message", function (topic, messageBuffer = "") {
+  const message = messageBuffer.toString();
   console.log(`Message received from broker: ${JSON.stringify({ topic, message })}`);
 
   // If we have a HTTP destination configured, pass the data to it
