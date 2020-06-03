@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development PORT=8080 nodemon src/index.js",
-    "start:prod": "NODE_ENV=production node src/index.js",
+    "start:prod": "cross-env NODE_ENV=production node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -20,10 +20,11 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
     "mqtt": "^4.1.0",
     "nodemon": "^2.0.4"
   },
-  "devDependencies": {
-    "cross-env": "^7.0.2"
-  }
+  "devDependencies": {}
 }
