@@ -22,7 +22,7 @@ if (!process.env.MQTT_HOSTNAME || !process.env.MQTT_PORT) {
 /************ HTTP Server ************/
 
 // The port the HTTP server will listen on
-const listenPort = process.env.LISTEN_PORT || 8080;
+const listenPort = process.env.PORT || 8080;
 
 // Create the server and make it parse JSON
 const app = express();
