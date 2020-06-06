@@ -47,6 +47,18 @@ app.post('/publish', (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send(`
+    <h1>mqtt-relay is up and listening on HTTP port ${listenPort}</h1>
+    <h2>Currently loaded configuration:</h2>
+    <table border=1>
+      <tr><td>MQTT broker URL</td><td>${process.env.MQTT_PROTOCOL || 'mqtt'}://${process.env.MQTT_HOSTNAME}:${process.env.MQTT_PORT}</td></tr>
+      <tr><td>HTTP destination URL</td><td>${process.env.HTTP_PROTOCOL || 'http'}://${process.env.HTTP_HOSTNAME}:${process.env.HTTP_PORT}/message</td></tr>
+    </table>
+    <h2>Use ${req.protocol}://${req.headers.host}/publish to send HTTP messages to the MQTT broker.</h2>
+  `);
+})
+
 // Start up the HTTP server on the specified port
 app.listen(listenPort, () => {
   console.log(`HTTP server is online and listening on port ${listenPort}...`);
